@@ -1,7 +1,7 @@
 package kr.ac.kopo.controller;
 
 import kr.ac.kopo.model.Product;
-import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.pager.ProductPager;
 import kr.ac.kopo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/list")
-    public String list(Model model, Pager pager) {
+    public String list(Model model, @ModelAttribute("pager") ProductPager pager) {
         List<Product> list = productService.list(pager);
 
         model.addAttribute("list", list);

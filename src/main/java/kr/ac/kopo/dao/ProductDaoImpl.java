@@ -2,6 +2,7 @@ package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Product;
 import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.pager.ProductPager;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,7 @@ public class ProductDaoImpl implements ProductDao {
     SqlSession sql;
 
     @Override
-    public List<Product> list(Pager pager) {
+    public List<Product> list(ProductPager pager) {
         return sql.selectList("product.list", pager);
     }
 

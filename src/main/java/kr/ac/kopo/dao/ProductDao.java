@@ -2,11 +2,12 @@ package kr.ac.kopo.dao;
 
 import kr.ac.kopo.model.Product;
 import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.pager.ProductPager;
 
 import java.util.List;
 
 public interface ProductDao {
-    List<Product> list(Pager pager);
+    List<Product> list(ProductPager pager);
 
     void add(Product item);
 

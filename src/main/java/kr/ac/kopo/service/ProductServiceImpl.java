@@ -2,7 +2,7 @@ package kr.ac.kopo.service;
 
 import kr.ac.kopo.dao.ProductDao;
 import kr.ac.kopo.model.Product;
-import kr.ac.kopo.pager.Pager;
+import kr.ac.kopo.pager.ProductPager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class ProductServiceImpl implements ProductService {
     ProductDao productDao;
 
     @Override
-    public List<Product> list(Pager pager) {
+    public List<Product> list(ProductPager pager) {
         int total = productDao.total(pager);
 
         pager.setTotal(total);
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void init() {
         while (true) {
-            List<Product> list = productDao.list(new Pager());
+            List<Product> list = productDao.list(new ProductPager());
 
             if (list.size() < 1)
                 break;

@@ -5,6 +5,27 @@
     <sql id="search">
         SELECT *
         FROM product
+        <where>
+            <if test="search eq 1">
+                product_id = #{keyword}
+            </if>
+
+            <if test="search eq 2">
+                name LIKE CONCAT('%', CONCAT(#{keyword}, '%'))
+            </if>
+
+            <if test="search eq 3">
+                price BETWEEN #{minPrice} AND #{maxPrice}
+            </if>
+
+            <if test="search eq 4">
+                category = #{keywordCategory}
+            </if>
+
+            <if test="search eq 5">
+                status = #{keywordStatus}
+            </if>
+        </where>
     </sql>
 
     <select id="total" resultType="Integer">
