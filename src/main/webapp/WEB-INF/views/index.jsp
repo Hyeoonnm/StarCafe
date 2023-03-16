@@ -13,6 +13,7 @@
     <div>
         <ul>
             <li><a href="product/list">제품 관리</a></li>
+            <li><a href="/resources/html/product.html">제품 관리 (AJAX)</a></li>
         </ul>
     </div>
 </div>

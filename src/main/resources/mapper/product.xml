@@ -6,24 +6,24 @@
         SELECT *
         FROM product
         <where>
-            <if test="search eq 1">
+            <if test="search == 1">
                 product_id = #{keyword}
             </if>
 
-            <if test="search eq 2">
+            <if test="search == 2">
                 name LIKE CONCAT('%', CONCAT(#{keyword}, '%'))
             </if>
 
-            <if test="search eq 3">
+            <if test="search == 3">
                 price BETWEEN #{minPrice} AND #{maxPrice}
             </if>
 
-            <if test="search eq 4">
-                category = #{keywordCategory}
+            <if test="search == 4">
+                category = #{keyword}
             </if>
 
-            <if test="search eq 5">
-                status = #{keywordStatus}
+            <if test="search == 5">
+                status = #{keyword}
             </if>
         </where>
     </sql>

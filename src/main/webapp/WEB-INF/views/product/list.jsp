@@ -11,6 +11,13 @@
 <html>
 <head>
     <jsp:include page="../header.jsp"/>
+    <style>
+        .a {
+            float: left;
+            margin-right: 1%;
+            margin-bottom: 1%;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -20,25 +27,33 @@
 
     <div>
         <form method="get">
-            <select class="form-select" aria-label="Default select example" name="search">
-                <option value="1" ${pager.search eq 1 ? 'selected' : ''}>제품 번호</option>
-                <option value="2" ${pager.search eq 2 ? 'selected' : ''}>제품명</option>
-                <option value="3" ${pager.search eq 3 ? 'selected' : ''}>단가</option>
-                <option value="4" ${pager.search eq 4 ? 'selected' : ''}>구분</option>
-                <option value="5" ${pager.search eq 5 ? 'selected' : ''}>판매 여부</option>
-            </select>
-
-            <div>
-            <input name="keyword" type="text" value="${pager.keyword}">
+            <div class="a">
+                <select class="form-select" name="search">
+                    <option value="0">검색항목</option>
+                    <option value="1" ${pager.search eq 1 ? 'selected' : ''}>제품 번호</option>
+                    <option value="2" ${pager.search eq 2 ? 'selected' : ''}>제품명</option>
+                    <option value="3" ${pager.search eq 3 ? 'selected' : ''}>단가</option>
+                    <option value="4" ${pager.search eq 4 ? 'selected' : ''}>구분</option>
+                    <option value="5" ${pager.search eq 5 ? 'selected' : ''}>판매 여부</option>
+                </select>
             </div>
 
-            <div>
-                <input name="minPrice" type="number" value="${pager.minPrice}" placeholder="하한 금액"> ~
-                <input name="maxPrice" type="number" value="${pager.maxPrice}" placeholder="상한 금액">
+            <div class="a">
+                <input class="form-control keyword-all keyword-1 keyword-2" name="keyword" type="text"
+                       value="${pager.keyword}"
+                       placeholder="Search">
             </div>
 
-            <div>
-                <select class="form-select" aria-label="Default select example" name="keywordCategory">
+            <div class="a">
+                <input class="form-control-sm keyword-all keyword-3" name="minPrice" type="number" value="0"
+                       placeholder="하한 금액"> ~
+                <input class="form-control-sm keyword-all keyword-3" name="maxPrice" type="number" value="0"
+                       placeholder="상한 금액">
+            </div>
+
+            <div class="a">
+                <select class="form-select  keyword-all keyword-4" aria-label="Default select example"
+                        name="keyword">
                     <option value="1">음료</option>
                     <option value="2">푸드</option>
                     <option value="3">상품</option>
@@ -46,15 +61,17 @@
                 </select>
             </div>
 
-            <div>
-                <select class="form-select" aria-label="Default select example" name="keywordStatus">
+            <div class="a">
+                <select class="form-select keyword-all keyword-5" aria-label="Default select example"
+                        name="keyword">
                     <option value="0">판매 중지</option>
                     <option value="1">판매 중</option>
                 </select>
             </div>
 
-
-            <button class="btn btn-sm btn-primary">검색</button>
+            <div class="a">
+                <button class="btn btn-sm btn-primary">검색</button>
+            </div>
         </form>
     </div>
 
@@ -93,6 +110,7 @@
             </c:forEach>
             </tbody>
         </table>
+
         <tfoot>
         <ul class="pagination" style="justify-content: center">
             <li class="page-item">
@@ -103,7 +121,9 @@
             <li class="page-item"><a class="page-link" href="?page=${pager.prev}${pager.query}">이전</a></li>
 
             <c:forEach var="page" items="${pager.list}">
-                <li class="page-item ${page eq pager.page ? 'active' : ''}"><a class="page-link" href="?page=${page}${pager.query}" >${page}</a></li>
+                <li class="page-item ${page eq pager.page ? 'active' : ''}"><a class="page-link"
+                                                                               href="?page=${page}${pager.query}">${page}</a>
+                </li>
             </c:forEach>
 
             <li class="page-item"><a class="page-link" href="?page=${pager.next}${pager.query}">다음</a></li>
@@ -114,7 +134,6 @@
             </li>
         </ul>
         </tfoot>
-
     </div>
 
     <div>
@@ -126,4 +145,5 @@
     </div>
 </div>
 </body>
+<script src="/resources/jQuery/search.js"/>
 </html>
